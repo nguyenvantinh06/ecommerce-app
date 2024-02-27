@@ -1,0 +1,18 @@
+// prefix font Family
+export const DEFAULT_PREFIX_FONT_FAMILY = 'TTCommonsPro';
+
+// fontFamily
+export const FONT_FAMILY = {
+  REGULAR: `${DEFAULT_PREFIX_FONT_FAMILY}-Regular`,
+  BOLD: `${DEFAULT_PREFIX_FONT_FAMILY}-Bold`,
+  EXTRABOLD: `${DEFAULT_PREFIX_FONT_FAMILY}-ExtraBold`,
+  SEMIBOLD: `${DEFAULT_PREFIX_FONT_FAMILY}-SemiBold`,
+  ITALIC: `${DEFAULT_PREFIX_FONT_FAMILY}-Italic`,
+  BOLDITALIC: `${DEFAULT_PREFIX_FONT_FAMILY}-BoldItalic`,
+  BLACK: `${DEFAULT_PREFIX_FONT_FAMILY}-Black`,
+  LIGHT: `${DEFAULT_PREFIX_FONT_FAMILY}-Light`,
+};
+
+export default {
+  FONT_FAMILY,
+};

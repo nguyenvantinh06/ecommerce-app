@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/TTCommonsProDemiBold.ttf",
+      "sha1": "7464cf5e54f11d439b9a35dfd3fedae49179e46a"
+    },
+    {
+      "path": "src/assets/fonts/TTCommonsProExtraBold.ttf",
+      "sha1": "26bc8f3b1f25f77dd1a7fb9d4cc43665f28ed0d2"
+    },
+    {
+      "path": "src/assets/fonts/TTCommonsProLight.ttf",
+      "sha1": "af9555121a2e6aa3dba34dafc8577eb1749bb871"
+    },
+    {
+      "path": "src/assets/fonts/TTCommonsProRegular.ttf",
+      "sha1": "5b6e23e899d3eba4251d0114c7da5883ec5fda08"
+    }
+  ]
+}
