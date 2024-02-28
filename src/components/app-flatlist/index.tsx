@@ -1,6 +1,6 @@
 import {useAppTheme} from 'src/config/theme-config';
 import {getSize} from 'src/hooks/use-resize-hoc';
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {FlatList, RefreshControl, FlatListProps} from 'react-native';
 import AppView from '../app-view';
 import FooterLoading from '../footer-loading';
@@ -45,6 +45,15 @@ const AppFlatList = ({
     setOnEndReachedCalledDuringMomentum,
   ] = useState(true);
   const [search, setSearch] = useState('');
+
+  const renderLoadingMoreComponent = useCallback(() => {
+    return loadingMore ? (
+      <FooterLoading />
+    ) : (
+      <AppView marginBottom={getSize.m(16)} />
+    );
+  }, [loadingMore]);
+
   return (
     <AppView flex>
       {hasSearchInput ? (
@@ -94,7 +103,7 @@ const AppFlatList = ({
         onEndReachedThreshold={0.5}
         onMomentumScrollBegin={() => setOnEndReachedCalledDuringMomentum(false)}
         ListEmptyComponent={
-          ListEmptyComponent || (
+          ListEmptyComponent ?? (
             <EmptyComponent
               errorOccurred={errorOccurred}
               textEmpty={textListEmpty}
@@ -103,13 +112,7 @@ const AppFlatList = ({
           )
         }
         ListFooterComponent={
-          ListFooterComponent ? (
-            ListFooterComponent
-          ) : loadingMore ? (
-            <FooterLoading />
-          ) : (
-            <AppView marginBottom={getSize.m(16)} />
-          )
+          ListFooterComponent ?? renderLoadingMoreComponent()
         }
       />
     </AppView>

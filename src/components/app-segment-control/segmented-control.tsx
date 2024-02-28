@@ -94,25 +94,24 @@ const SegmentedControl = ({
         />
       )}
       <View style={styles.segmentsContainer}>
-        {values &&
-          values.map((value, index) => {
-            return (
-              <SegmentedControlTab
-                enabled={selectedIndex === index ? false : true}
-                selected={selectedIndex === index}
-                key={index}
-                value={value}
-                tintColor={tintColor}
-                tabStyle={tabStyle}
-                fontStyle={fontStyle}
-                activeFontStyle={activeFontStyle}
-                appearance={colorScheme}
-                onSelect={() => {
-                  handleChange(index);
-                }}
-              />
-            );
-          })}
+        {values?.map((value, index) => {
+          return (
+            <SegmentedControlTab
+              enabled={selectedIndex === index ? false : true}
+              selected={selectedIndex === index}
+              key={index}
+              value={value}
+              tintColor={tintColor}
+              tabStyle={tabStyle}
+              fontStyle={fontStyle}
+              activeFontStyle={activeFontStyle}
+              appearance={colorScheme}
+              onSelect={() => {
+                handleChange(index);
+              }}
+            />
+          );
+        })}
       </View>
       {selectedIndex != null && segmentWidth ? (
         <Animated.View

@@ -4,12 +4,8 @@ import {STYLE_GLOBAL} from 'src/config/style-global';
 import {getSize} from 'src/hooks/use-resize-hoc';
 import AppStyles from 'src/config/styles';
 import {useAppDispatch, useAppSelector} from 'src/store/hooks';
-import {
-  getFilterUpdatesSelector,
-  messageActions,
-} from 'src/store/slices/message-slice';
+
 import SegmentedControl from '../app-segment-control';
-import {ParentPhotoFilterUpdateDto} from 'src/apis';
 import _ from 'lodash';
 
 if (
@@ -25,7 +21,7 @@ interface IFilterMessageUpdate {
 const FilterMessageUpdates = ({
   onPressSelectorFilter,
 }: IFilterMessageUpdate) => {
-  const filterUpdates = useAppSelector(getFilterUpdatesSelector);
+  const filterUpdates = [...FILTER_CATEGORY];
   const dispatch = useAppDispatch();
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -50,7 +46,7 @@ const FilterMessageUpdates = ({
         isSelected:
           itemFilter?.name === event?.nativeEvent?.value ? true : false,
       }));
-      dispatch(messageActions.setFilterMessagesUpdates(result));
+      // dispatch(messageActions.setFilterMessagesUpdates(result));
       onPressSelectorFilter?.();
     },
     [dispatch, filterUpdates],
@@ -58,9 +54,7 @@ const FilterMessageUpdates = ({
   return (
     <View style={styles.containerFilterSegment}>
       <SegmentedControl
-        values={filterUpdates?.map(
-          (item: ParentPhotoFilterUpdateDto) => item?.name,
-        )}
+        values={filterUpdates?.map((item: any) => item?.name)}
         selectedIndex={selectedIndex}
         onChange={handleValueChange}
         backgroundColor={AppStyles.color.PRIMARY_100}

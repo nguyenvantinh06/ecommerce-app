@@ -25,7 +25,7 @@ export enum StartupStatus {
 }
 
 export enum InitialTab {
-  HOME = 'HomeTab',
+  Home = 'HomeTab',
 }
 
 interface IAppStartupState {
@@ -35,7 +35,7 @@ interface IAppStartupState {
 
 const initialState: IAppStartupState = {
   status: undefined,
-  initTab: InitialTab.HOME,
+  initTab: InitialTab.Home,
 };
 
 export const appStartupSlice = createSlice({
@@ -97,7 +97,7 @@ export const appStartupSlice = createSlice({
       return {
         ...state,
         status: StartupStatus.LOAD_DATA_DONE,
-        initTab: action?.payload?.initTab || InitialTab.HOME,
+        initTab: action?.payload?.initTab || InitialTab.Home,
       };
     },
     [StartupStatus.LOAD_UI](

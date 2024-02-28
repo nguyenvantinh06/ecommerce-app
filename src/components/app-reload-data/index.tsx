@@ -15,7 +15,6 @@ const AppReloadData = ({onRefresh}: IAppReloadData) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        // scrollToTop();
         onRefresh();
       }}
       style={styles.buttonReload}>

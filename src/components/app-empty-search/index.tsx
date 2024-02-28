@@ -1,5 +1,5 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useEffect, useMemo, useState} from 'react';
+import {StyleSheet} from 'react-native';
+import React, {useMemo} from 'react';
 import AppView from '../app-view';
 import AppText from '../app-text';
 import {STYLE_GLOBAL} from 'src/config/style-global';
@@ -15,7 +15,7 @@ const EmptySearch = ({searchKey}: IProps) => {
   const color = useMemo(() => {
     return {
       result: theme.dark ? 'rgba(255, 255, 255, 0.67)' : 'rgba(0, 0, 0, 0.67)',
-      deciption: theme.dark
+      description: theme.dark
         ? 'rgba(255, 255, 255, 0.38)'
         : 'rgba(0, 0, 0, 0.38)',
     };
@@ -46,7 +46,7 @@ const EmptySearch = ({searchKey}: IProps) => {
         style={{
           ...STYLE_GLOBAL.heading6,
           fontWeight: '500',
-          color: color.deciption,
+          color: color.description,
         }}>
         Check the spelling or try a new search.
       </AppText>

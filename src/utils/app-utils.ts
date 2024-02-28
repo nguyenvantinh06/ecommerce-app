@@ -17,6 +17,7 @@ import {GlobalUIManager} from 'src/global-ui';
 // import FileViewer from 'react-native-file-viewer';
 import AppStyles from 'src/config/styles';
 import RNFetchBlob from 'rn-fetch-blob';
+import {v4 as uuidv4Lib} from 'uuid';
 
 // format dateString to string or Date to string by a formatString
 export function dateTimeFormat(date: any, formatString = 'DD/MM/YYYY') {
@@ -79,11 +80,7 @@ export const getSubString = (
 };
 
 export function uuidv4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = (Math.random() * 16) | 0,
-      v = c === 'x' ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
+  return uuidv4Lib();
 }
 
 export async function openURL(url: string) {
@@ -180,9 +177,7 @@ export const getUniqueFileName = async (filePath: string) => {
   const fileName = filePath.replace(`.${fileExt}`, '');
 
   let count = 1;
-  let uniqueFileName = filePath;
-
-  uniqueFileName = `${fileName}_${count}.${fileExt}`;
+  let uniqueFileName = `${fileName}_${count}.${fileExt}`;
 
   while (await RNFS.exists(uniqueFileName)) {
     uniqueFileName = `${fileName}_${count}.${fileExt}`;
@@ -307,70 +302,32 @@ export const getUrlExtension = (url: string) => {
 //   }
 // };
 
-export const openFilePdfNotification = async (
-  url: string,
-  messageId: string,
-) => {
-  try {
-    MessageService.markReadPdf(messageId);
-    const localPath = await downloadFileFetchBlob(url);
-    FileViewer.open(localPath || '', {
-      showOpenWithDialog: true,
-      showAppsSuggestions: true,
-    })
-      .then(() => {
-        console.log('File downloaded successfully!');
-      })
-      .catch(error => {
-        console.log('error downloaded', error);
-      });
-  } catch (error) {
-    console.log('Error opening file:', error);
-    GlobalUIManager.view?.showSnackbar({
-      message:
-        "Can't open file. Please download the file viewer app via the store.",
-      duration: 2000,
-    });
-  }
-};
-
-export const getPolygonColor = (backgroundColor: string): string => {
-  switch (backgroundColor) {
-    case AppStyles.color.COLOR_LEAF_GREEN_100:
-      return AppStyles.color.COLOR_LEAF_GREEN_60;
-    case AppStyles.color.COLOR_ORANGE_100:
-      return AppStyles.color.COLOR_ORANGE_60;
-    case AppStyles.color.COLOR_AQUA_TEAL_100:
-      return AppStyles.color.COLOR_AQUA_TEAL_60;
-    case AppStyles.color.COLOR_CHROME_YELLOW:
-      return AppStyles.color.COLOR_CHROME_YELLOW_60;
-    case AppStyles.color.COLOR_CORAL_100:
-      return AppStyles.color.COLOR_CORAL_60;
-    case AppStyles.color.COLOR_GRAY_600:
-      return AppStyles.color.COLOR_GRAY_300;
-    case AppStyles.color.COLOR_NEUTRAL_BEIGE:
-      return AppStyles.color.GRAY_100;
-    default:
-      return AppStyles.color.COLOR_PRIMARY_60;
-  }
-};
-
-export const getColorCheckedIn = (backgroundColor: string) => {
-  switch (backgroundColor) {
-    case AppStyles.color.COLOR_PRIMARY_100:
-    case AppStyles.color.COLOR_LEAF_GREEN_100:
-    case AppStyles.color.COLOR_ORANGE_100:
-    case AppStyles.color.COLOR_WARM_GREY:
-      return AppStyles.color.GRAY_200;
-    case AppStyles.color.COLOR_AQUA_TEAL_100:
-    case AppStyles.color.COLOR_CHROME_YELLOW:
-    case AppStyles.color.COLOR_CORAL_100:
-    case AppStyles.color.COLOR_NEUTRAL_BEIGE:
-      return AppStyles.color.GRAY_200;
-    default:
-      return AppStyles.color.GRAY_200;
-  }
-};
+// export const openFilePdfNotification = async (
+//   url: string,
+//   messageId: string,
+// ) => {
+//   try {
+//     MessageService.markReadPdf(messageId);
+//     const localPath = await downloadFileFetchBlob(url);
+//     FileViewer.open(localPath || '', {
+//       showOpenWithDialog: true,
+//       showAppsSuggestions: true,
+//     })
+//       .then(() => {
+//         console.log('File downloaded successfully!');
+//       })
+//       .catch(error => {
+//         console.log('error downloaded', error);
+//       });
+//   } catch (error) {
+//     console.log('Error opening file:', error);
+//     GlobalUIManager.view?.showSnackbar({
+//       message:
+//         "Can't open file. Please download the file viewer app via the store.",
+//       duration: 2000,
+//     });
+//   }
+// };
 
 export async function downloadFileFetchBlob(pdfUrl: string) {
   try {

@@ -262,7 +262,7 @@ function AppTextInput({
               onFocus={() => setFocus(true)}
               onBlur={() => setFocus(false)}
               autoCapitalize="none"
-              blurOnSubmit={!multiline && true}
+              blurOnSubmit={!multiline}
               ref={refCallback}
               secureTextEntry={secureEye && isSecure}
               editable={editable}

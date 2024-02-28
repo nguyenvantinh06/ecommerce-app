@@ -3,7 +3,6 @@ import React, {PureComponent} from 'react';
 import AppText from '../app-text';
 import styles from './styles';
 import {getSize} from 'src/hooks/use-resize-hoc';
-import logger from 'src/utils/logger';
 import AppStyles from 'src/config/styles';
 export interface IBaseButton {
   style?: ViewStyle;
@@ -18,14 +17,11 @@ export interface IBaseButton {
 }
 class BaseButton extends PureComponent<IBaseButton, {}> {
   static defaultProps: IBaseButton;
-  constructor(props: IBaseButton) {
-    super(props);
-  }
 
   handleOnPress() {
     Keyboard.dismiss();
-    const {onPress, stylePress} = this.props;
-    onPress && onPress();
+    const {onPress} = this.props;
+    onPress?.();
   }
   render() {
     const {

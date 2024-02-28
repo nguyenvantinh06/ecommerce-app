@@ -1,4 +1,3 @@
-import AppStyles from 'src/config/styles';
 import {getSize} from 'src/hooks/use-resize-hoc';
 import {ViewStyle, TextStyle} from 'react-native';
 import {FONT_FAMILY} from 'src/components/app-text/app-font';

@@ -10,8 +10,9 @@ import AppText from 'src/components/app-text';
 import {StackNavigation} from 'src/types';
 import AppIcons from 'src/utils/app-icon';
 import {parseBadge} from 'src/utils/app-utils';
-import {SVG_NAME} from 'src/config/svg-path';
+import {SvgName} from 'src/config/svg-path';
 import {FONT_FAMILY} from '../app-text/app-font';
+import {BlurView} from '@react-native-community/blur';
 
 const BottomTabView = (props: BottomTabBarProps) => {
   const theme = useAppTheme();
@@ -27,69 +28,76 @@ const BottomTabView = (props: BottomTabBarProps) => {
     {
       id: 1,
       iconActive: (
-        <SVG_NAME.HOME_ACTIVE
+        <SvgName.HomeActive
           width={getSize.s(24)}
           height={getSize.v(24)}
           stroke={activeColor}
         />
       ),
-      iconUnActive: AppIcons.HOME,
+      iconUnActive: AppIcons.Home,
     },
     {
       id: 2,
       iconActive: (
-        <SVG_NAME.CHECK_CIRCLE_ACTIVE
+        <SvgName.CheckCircleActive
           width={getSize.s(24)}
           height={getSize.v(24)}
           stroke={activeColor}
         />
       ),
-      iconUnActive: AppIcons.CHECK_CIRCLE,
+      iconUnActive: AppIcons.CheckCircle,
     },
     {
       id: 3,
       iconActive: (
-        <SVG_NAME.COLLECTION_ACTIVE
+        <SvgName.CollectionActive
           width={getSize.s(24)}
           height={getSize.v(24)}
           stroke={activeColor}
         />
       ),
-      iconUnActive: AppIcons.COLLECTION,
+      iconUnActive: AppIcons.Collection,
     },
     {
       id: 4,
       iconActive: (
-        <SVG_NAME.USER_ACTIVE
+        <SvgName.UserActive
           width={getSize.s(24)}
           height={getSize.v(24)}
           stroke={activeColor}
         />
       ),
-      iconUnActive: AppIcons.USER,
+      iconUnActive: AppIcons.User,
     },
     {
       id: 5,
       iconActive: (
-        <SVG_NAME.QUESTION_MARK_CIRCLE_ACTIVE
+        <SvgName.QuestionMarkCircleActive
           width={getSize.s(24)}
           height={getSize.v(24)}
           stroke={activeColor}
         />
       ),
-      iconUnActive: AppIcons.QUESTION_MARK_CIRCLE,
+      iconUnActive: AppIcons.QuestionMarkCircle,
     },
   ];
 
   const containerStyle = {
     paddingBottom: insets.bottom,
     backgroundColor: theme.colors.background,
-    borderTopWidth: 1,
+    borderTopWidth: 0,
     borderColor: theme.colors.borderColor,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   };
 
   return (
     <View style={[styles.container, containerStyle]}>
+      {/* <BlurView
+        blurType="regular"
+        blurAmount={80}
+        style={styles.blurViewStyle}
+      /> */}
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
         const label =
@@ -231,5 +239,12 @@ const styles = StyleSheet.create({
     fontSize: getSize.m(8),
     fontWeight: '600',
     lineHeight: getSize.m(10),
+  },
+  blurViewStyle: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
   },
 });

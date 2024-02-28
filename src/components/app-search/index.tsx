@@ -10,9 +10,9 @@ import {
 import AppStyles from 'src/config/styles';
 import {getSize} from 'src/hooks/use-resize-hoc';
 import VectorIcon from 'src/components/vector-icon';
-import {useTheme} from 'react-native-paper';
 import AppView from 'src/components/app-view';
 import {useAppSelector} from 'src/store/hooks';
+import {useAppTheme} from 'src/config/theme-config';
 
 interface ISearchComp {
   autoFocus?: boolean;
@@ -33,7 +33,7 @@ const Search = ({
   setSearch = () => {},
   disabled = false,
 }: ISearchComp) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   const [searchKey, setSearchKey] = useState('');
 
   const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null);

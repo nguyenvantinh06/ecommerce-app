@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useMemo, useEffect} from 'react';
+import React, {useCallback, useState, useMemo} from 'react';
 import {Image, View} from 'react-native';
 import FastImage from 'react-native-fast-image';
 import styles from './styles';
@@ -26,14 +26,6 @@ function AppImage({style, source, url, imgError, iconError, ...rest}: Props) {
     setIsError(true);
   }, []);
 
-  // useEffect(() => {
-  //   setIsError(false);
-  //   sour?.uri &&
-  //     Image.prefetch(sour.uri).catch(() => {
-  //       setIsError(true);
-  //     });
-  // }, [sour]);
-
   const onLoadStart = useCallback(() => {
     setIsError(false);
     setIsLoading(true);
@@ -55,27 +47,25 @@ function AppImage({style, source, url, imgError, iconError, ...rest}: Props) {
             backgroundColor: AppStyles.color.COLOR_BORDER,
           },
         ]}>
-        {iconError ? <>{iconError}</> : <AppText>Error</AppText>}
+        {<>{iconError}</> || <AppText>Error</AppText>}
       </View>
     );
   }
 
   return (
-    <>
-      <FastImage
-        onLoadStart={onLoadStart}
-        onLoadEnd={onLoadEnd}
-        onError={onError}
-        {...rest}
-        style={[styles.container, style]}
-        source={sour}>
-        {isLoading && (
-          <View style={[styles.container, style, styles.overlay]}>
-            <Spinner color={AppStyles.color.COLOR_PRIMARY_100} />
-          </View>
-        )}
-      </FastImage>
-    </>
+    <FastImage
+      onLoadStart={onLoadStart}
+      onLoadEnd={onLoadEnd}
+      onError={onError}
+      {...rest}
+      style={[styles.container, style]}
+      source={sour}>
+      {isLoading && (
+        <View style={[styles.container, style, styles.overlay]}>
+          <Spinner color={AppStyles.color.COLOR_PRIMARY_100} />
+        </View>
+      )}
+    </FastImage>
   );
 }
 

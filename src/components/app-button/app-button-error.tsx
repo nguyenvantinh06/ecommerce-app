@@ -6,7 +6,7 @@ import AppStyles from 'src/config/styles';
 import {getSize} from 'src/hooks/use-resize-hoc';
 
 class ButtonError extends PureComponent<IBaseButton & {theme: AppTheme}, {}> {
-  static defaultProps: IBaseButton;
+  static readonly defaultProps: IBaseButton;
   render() {
     const {
       styleTouchOpacity = {},

@@ -11,10 +11,7 @@ import {
   InitialTab,
   appStartupActions,
 } from 'src/store/slices/app-startup-slice';
-import {
-  authActions,
-  getUserInformationSelector,
-} from 'src/store/slices/auth-slice';
+import {authActions} from 'src/store/slices/auth-slice';
 import {RootState, store} from 'src/store/store';
 import _ from 'lodash';
 import {call, put, select} from 'redux-saga/effects';
@@ -27,7 +24,6 @@ import AppService from 'src/services/app-service';
 import logger from 'src/utils/logger';
 import {apiClient} from 'src/services/client';
 import jwt_decode from 'jwt-decode';
-import {GetUserInfoResponse} from 'src/apis';
 import 'react-native-url-polyfill/auto';
 
 const {
@@ -177,7 +173,7 @@ export function* startupLoadDataSaga(
     (state: RootState) => state.auth,
   );
   // const userInformation: ILoginState = yield select(getUserInformationSelector);
-  let initTab = InitialTab.HOME;
+  let initTab = InitialTab.Home;
   if (isLoggedIn) {
     logger.log('START UP --> LOAD DATA --> LOGGED');
     // !TODO: - get user profile

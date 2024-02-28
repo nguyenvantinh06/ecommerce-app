@@ -4,7 +4,6 @@ import NavigationService from 'src/navigation/navigations-service';
 import {SIZE} from 'src/config/style-global';
 import VectorIcon from 'src/components/vector-icon';
 import React from 'react';
-import {getStatusBarHeight} from 'react-native-iphone-x-helper';
 import {
   BackHandler,
   Keyboard,
@@ -14,14 +13,12 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import {useTheme} from 'react-native-paper';
 import {useAppTheme} from 'src/config/theme-config';
 import {useNavigation} from '@react-navigation/native';
-import {SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import useOrientation from 'src/hooks/use-orientation';
-import AppView from '../app-view';
+import AppView from 'src/components/app-view';
 import AppText from 'src/components/app-text';
-import {useAppSelector} from 'src/store/hooks';
 
 interface IProps {
   title?: string;
@@ -120,7 +117,7 @@ const AppContainer = ({
               paddingTop: inset.top + getSize.v(7),
             },
             hasBottomWidth && {borderBottomWidth: 1},
-            styleHeader && styleHeader,
+            styleHeader,
           ]}>
           {isCustomHeader ? (
             <View style={[styles.innerHeader, styleInnerHeader]}>
@@ -195,7 +192,7 @@ const AppContainer = ({
               backgroundColor: theme.colors.background,
               height: inset.top + getSize.v(7),
             },
-            styleHeader && styleHeader,
+            styleHeader,
           ]}
         />
       )}
@@ -239,7 +236,6 @@ const styles = StyleSheet.create({
   headerContainer: {
     minHeight: getSize.v(36),
     paddingHorizontal: getSize.m(16),
-    // borderBottomWidth: 1,
     backgroundColor: AppStyles.color.WHITE,
   },
   innerHeader: {

@@ -3,12 +3,11 @@ import React from 'react';
 import AppText from 'src/components/app-text';
 import AppStyles from 'src/config/styles';
 import {getSize} from 'src/hooks/use-resize-hoc';
-import {useTheme} from 'react-native-paper';
 import {FONT_FAMILY} from '../app-text/app-font';
-interface IFooterLoading {}
+import {useAppTheme} from 'src/config/theme-config';
 
-const FooterLoading = ({}: IFooterLoading) => {
-  const theme = useTheme();
+const FooterLoading = () => {
+  const theme = useAppTheme();
 
   return (
     <View style={styles.container}>

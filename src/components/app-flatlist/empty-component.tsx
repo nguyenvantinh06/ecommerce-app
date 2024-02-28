@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
 
@@ -8,10 +8,9 @@ import AppStyles from 'src/config/styles';
 import {STYLE_GLOBAL} from 'src/config/style-global';
 import {getSize} from 'src/hooks/use-resize-hoc';
 import AppView from 'src/components/app-view';
-import AppImage from '../app-image';
-import AppIcons from 'src/utils/app-icon';
+import AppImage from 'src/components/app-image';
 
-interface props {
+interface Props {
   errorOccurred?: boolean;
   textEmpty?: string;
   search?: string;
@@ -22,37 +21,39 @@ const EmptyComponent = ({
   textEmpty,
   search,
   hasImage = true,
-}: props) => {
+}: Props) => {
   const theme = useAppTheme();
   const {t} = useTranslation();
+
+  const renderEmptyNoSearch = useCallback(() => {
+    return hasImage ? (
+      <>
+        <AppImage
+          source={require('src/assets/images/EmptyState.png')}
+          style={styles.imageNoInformationFound}
+        />
+        <AppText style={styles.noDataImage}>
+          You don’t have any updates yet. They will appear here as soon as you
+          do.
+        </AppText>
+      </>
+    ) : (
+      <AppText
+        style={[
+          styles.noData,
+          {
+            color: theme.colors.text,
+          },
+        ]}>
+        {errorOccurred ? t('error_message.server') : textEmpty || t('no_data')}
+      </AppText>
+    );
+  }, [hasImage, errorOccurred, textEmpty]);
+
   return (
     <AppView flex={1} justifyCenter alignCenter>
       {!search ? (
-        hasImage ? (
-          // <AppImage
-          //   source={require('src/assets/images/no_information_found.png')}
-          //   style={styles.imageNoInformationFound}
-          // />
-          <>
-            {AppIcons.NOT_FOUND_COURSES}
-            <AppText style={styles.noDataImage}>
-              You don’t have any updates yet. They will appear here as soon as
-              you do.
-            </AppText>
-          </>
-        ) : (
-          <AppText
-            style={[
-              styles.noData,
-              {
-                color: theme.colors.text,
-              },
-            ]}>
-            {errorOccurred
-              ? t('error_message.server')
-              : textEmpty || t('no_data')}
-          </AppText>
-        )
+        renderEmptyNoSearch()
       ) : (
         <AppView>
           <AppText

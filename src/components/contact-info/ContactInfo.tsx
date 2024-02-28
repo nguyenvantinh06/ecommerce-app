@@ -34,15 +34,15 @@ function ItemInformation({type, title, styleTitle}: ItemProps) {
     switch (type) {
       case 'phone':
         return {
-          icon: AppIcons.PHONE_PROFILE,
+          icon: AppIcons.PhoneProfile,
         };
       case 'email':
         return {
-          icon: AppIcons.MAIL_PROFILE,
+          icon: AppIcons.MailProfile,
         };
       case 'userType':
         return {
-          icon: AppIcons.USER_PROFILE,
+          icon: AppIcons.UserProfile,
         };
     }
   }, []);
@@ -102,7 +102,7 @@ export default function ContactInfo({
       </View>
       {!hasEditButton ? null : (
         <Pressable style={styles.editIcon} onPress={onPressEdit}>
-          {AppIcons.EDIT_PROFILE}
+          {AppIcons.EditProfile}
         </Pressable>
       )}
     </View>

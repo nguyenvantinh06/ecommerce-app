@@ -17,6 +17,7 @@ import {
 import {SCENE_NAME} from 'src/utils/app-const';
 import {StackActions} from '@react-navigation/native';
 import TestScreen from 'src/screens/Test';
+import {BlurView} from '@react-native-community/blur';
 
 const Todo = () => {
   return (
@@ -116,28 +117,28 @@ const BottomTabStack = () => {
         // listeners={props => tabPressListener({...props})}
       />
       <Tab.Screen
-        name={SCENE_NAME.CHECK_IN_TAB}
+        name={SCENE_NAME.LIKES_TAB}
         component={Todo}
         options={{
           title: 'Likes',
         }}
       />
       <Tab.Screen
-        name={SCENE_NAME.UPDATES_TAB}
+        name={SCENE_NAME.MESSAGES_TAB}
         component={Todo}
         options={{
           title: 'Messages',
         }}
       />
       <Tab.Screen
-        name={SCENE_NAME.PROFILE_TAB}
+        name={SCENE_NAME.CART_TAB}
         component={Todo}
         options={{
           title: 'Cart',
         }}
       />
       <Tab.Screen
-        name={SCENE_NAME.HELP_TAB}
+        name={SCENE_NAME.ACCOUNT_TAB}
         component={Todo}
         options={{
           title: 'Account',

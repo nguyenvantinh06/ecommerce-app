@@ -96,8 +96,8 @@ const ErrorInternetConnection = React.forwardRef<
         <AppView style={[styles.content, {paddingTop: getSize.m(191)}]}>
           <AppView>
             {theme.dark
-              ? AppIcons.NO_INTERNET_CONNECTION_DARK
-              : AppIcons.NO_INTERNET_CONNECTION}
+              ? AppIcons.NoInternetConnectionDark
+              : AppIcons.NoInternetConnection}
           </AppView>
 
           <AppView paddingTop={getSize.m(16)}>

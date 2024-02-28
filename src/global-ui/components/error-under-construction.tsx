@@ -58,7 +58,7 @@ const ErrorUnderConstructionUI = React.forwardRef<
           </AppView>
           {/* body */}
           <AppView style={[styles.body, {paddingTop: getSize.m(132)}]}>
-            {AppIcons.ROAD_BLOCK}
+            {AppIcons.RoadBlock}
             <AppText
               style={{...STYLE_GLOBAL.heading4, paddingTop: getSize.m(48)}}>
               We will be back soon!
@@ -69,8 +69,9 @@ const ErrorUnderConstructionUI = React.forwardRef<
                 textAlign: 'center',
                 paddingTop: getSize.m(24),
               }}>
-              rnproject_template Parent is performing routine maintenance. Please wait a few
-              minutes and then restart rnproject_template Parent.
+              rnproject_template Parent is performing routine maintenance.
+              Please wait a few minutes and then restart rnproject_template
+              Parent.
             </AppText>
           </AppView>
           {/* footer */}
