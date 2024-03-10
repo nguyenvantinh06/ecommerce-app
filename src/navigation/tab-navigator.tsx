@@ -18,6 +18,7 @@ import {SCENE_NAME} from 'src/utils/app-const';
 import {StackActions} from '@react-navigation/native';
 import TestScreen from 'src/screens/Test';
 import {BlurView} from '@react-native-community/blur';
+import HomeScreen from 'src/screens/HomeScreen';
 
 const Todo = () => {
   return (
@@ -112,7 +113,7 @@ const BottomTabStack = () => {
       }}>
       <Tab.Screen
         name={SCENE_NAME.HOME_TAB}
-        component={Todo}
+        component={HomeScreen}
         options={{title: 'Home'}}
         // listeners={props => tabPressListener({...props})}
       />

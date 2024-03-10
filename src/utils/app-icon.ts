@@ -69,6 +69,15 @@ const AppIcons = {
   MailProfile: withIconResizeHOC(SvgName.MailProfile, {
     s: 16,
   }),
+  MessageCircle: withIconResizeHOC(SvgName.Message, {
+    s: 24,
+  }),
+  MessageCircleActive: withIconResizeHOC(SvgName.MessageActive, {
+    s: 24,
+  }),
+  Cart: withIconResizeHOC(SvgName.Cart, {
+    s: 24,
+  }),
 };
 
 export default AppIcons;

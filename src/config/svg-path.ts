@@ -25,6 +25,10 @@ import EditProfile from 'src/assets/svg/edit-profile.svg';
 import UserProfile from 'src/assets/svg/user-profile.svg';
 import PhoneProfile from 'src/assets/svg/phone-profile.svg';
 import MailProfile from 'src/assets/svg/mail-profile.svg';
+import Message from 'src/assets/svg/message.svg';
+import MessageActive from 'src/assets/svg/message-active.svg';
+import Cart from 'src/assets/svg/cart.svg';
+import CartActive from 'src/assets/svg/cart-active.svg';
 
 export const SvgName = {
   Search,
@@ -51,4 +55,8 @@ export const SvgName = {
   UserProfile,
   PhoneProfile,
   MailProfile,
+  Message,
+  MessageActive,
+  Cart,
+  CartActive,
 };

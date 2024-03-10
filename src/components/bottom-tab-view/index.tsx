@@ -50,16 +50,27 @@ const BottomTabView = (props: BottomTabBarProps) => {
     {
       id: 3,
       iconActive: (
-        <SvgName.CollectionActive
+        <SvgName.MessageActive
           width={getSize.s(24)}
           height={getSize.v(24)}
           stroke={activeColor}
         />
       ),
-      iconUnActive: AppIcons.Collection,
+      iconUnActive: AppIcons.MessageCircle,
     },
     {
       id: 4,
+      iconActive: (
+        <SvgName.CartActive
+          width={getSize.s(24)}
+          height={getSize.v(24)}
+          stroke={activeColor}
+        />
+      ),
+      iconUnActive: AppIcons.Cart,
+    },
+    {
+      id: 5,
       iconActive: (
         <SvgName.UserActive
           width={getSize.s(24)}
@@ -68,17 +79,6 @@ const BottomTabView = (props: BottomTabBarProps) => {
         />
       ),
       iconUnActive: AppIcons.User,
-    },
-    {
-      id: 5,
-      iconActive: (
-        <SvgName.QuestionMarkCircleActive
-          width={getSize.s(24)}
-          height={getSize.v(24)}
-          stroke={activeColor}
-        />
-      ),
-      iconUnActive: AppIcons.QuestionMarkCircle,
     },
   ];
 
